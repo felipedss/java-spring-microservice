@@ -1,5 +1,15 @@
-deploy:
-  provider: heroku
-  api_key:
-    secure: "56ed3350-e87c-460c-a2bf-ab3f4201bf3b"
-  app: java-spring-microservice
+language: java
+jdk: openjdk11
+
+sudo: required
+
+services:
+  - docker
+
+stages:
+  - build
+
+jobs:
+  include:
+    - stage: build
+      script: mvn clean -B package
