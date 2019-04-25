@@ -25,7 +25,7 @@ jobs:
       script:
         - docker login -u $DOCKER_USER -p $DOCKER_PASS
         - export TAG=latest
-        - export IMAGE_NAME=java-spring-microservice
+        - export IMAGE_NAME=felipedsr/java-spring-microservice
         - docker build -t $IMAGE_NAME:$COMMIT .
         - docker tag $IMAGE_NAME:$COMMIT $IMAGE_NAME:$TAG
         - docker push $IMAGE_NAME
