@@ -1,0 +1,5 @@
+deploy:
+  provider: heroku
+  api_key:
+    secure: "56ed3350-e87c-460c-a2bf-ab3f4201bf3b"
+  app: java-spring-microservice
