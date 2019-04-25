@@ -10,8 +10,14 @@ services:
 
 stages:
   - build
+  - docker_image
+  - deploy
 
 jobs:
   include:
     - stage: build
       script: mvn clean -B package
+    - stage: docker_image
+      script:
+        - docker-compose build
+
