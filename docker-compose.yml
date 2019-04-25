@@ -1,6 +1,0 @@
-version: "3"
-services:
-  app:
-    build: .
-    image: java-spring-microservice
-    container_name: java-spring-microservice

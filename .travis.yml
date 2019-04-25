@@ -4,7 +4,11 @@ jdk: openjdk11
 
 before_install:
   - chmod +x mvnw
-  -
+
+env:
+  global:
+    - COMMIT=${TRAVIS_COMMIT::7}
+
 services:
   - docker
 
@@ -19,5 +23,8 @@ jobs:
       script: mvn clean -B package
     - stage: docker_image
       script:
-        - docker-compose build
-
+        - docker login -u $DOCKER_USER -p $DOCKER_PASS
+        - export IMAGE_NAME=java-spring-microservice
+        - docker build -t $IMAGE_NAME:$COMMIT .
+        - docker tag $IMAGE_NAME:$COMMIT $IMAGE_NAME:$TAG
+        - docker push $IMAGE_NAME
