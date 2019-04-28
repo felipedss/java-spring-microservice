@@ -7,3 +7,12 @@ spring:
   data:
     mongodb:
       uri: 'mongodb://localhost:27017/sample'
+
+management:
+  endpoint:
+    health:
+      show-details: always
+  endpoints:
+    web:
+      exposure:
+        include: health, info, prometheus
